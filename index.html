@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观月抱云・永劫工具站</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- 51.LA 统计代码（含事件分析追踪） -->
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3RjVfJ5fatX5bllo",ck:"3RjVfJ5fatX5bllo",autoTrack:true})</script>
+
+<style>
+  :root{
+    --bg: #f6f5f0; --panel: #ffffff; --panel2: #f9f8f4; --line: #e6e4db;
+    --text: #3d3f3a; --muted: #8b9088; --accent: #b2c9b6; --accent2: #d8bfaa;
+    --danger: #d98880; --radius: 16px; --up: #e53935; --down: #43a047; --flat: #9e9e9e;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.6;}
+  header{ padding:60px 20px 20px; text-align:center; position: relative; }
+  .title-container { position: relative; display: inline-block; margin-bottom: 12px; }
+  .title-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Great Vibes', cursive; font-size: 150px; color: var(--accent); opacity: 0.4; white-space: nowrap; pointer-events: none; z-index: 1; }
+  header h1{ position: relative; z-index: 2; margin: 0; font-size: 32px; letter-spacing: 4px; font-weight: 800; color: #2c2f2b; text-shadow: 0 4px 15px rgba(255,255,255,0.9); }
+  .title-sub { font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 8px; color: var(--muted); text-transform: uppercase; margin-top: 5px; z-index: 2; position: relative; }
+  .title-cats { font-size: 13px; color: var(--muted); margin-top: 6px; letter-spacing: 1px; position: relative; z-index: 2;}
+  header .sig{color:var(--accent2); font-size:14px; letter-spacing:2px; margin-top: 12px; font-weight: 600;}
+  
+  .header-share-wrap { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; }
+  .header-share-wrap .share-text { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .header-share-wrap .share-icon-btn { background: var(--panel2); border: 1px solid var(--line); color: var(--accent2); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; cursor: pointer; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.02); padding: 0; }
+  .header-share-wrap .share-icon-btn:hover { background: #fff; border-color: var(--accent2); box-shadow: 0 2px 6px rgba(216, 191, 170, 0.3); transform: translateY(-1px); }
+  
+  .platform-notice { display: inline-block; margin-top: 12px; font-size: 12px; color: #b08d72; background: #fffaf6; padding: 4px 16px; border-radius: 20px; border: 1px dashed #e3d0c1; position: relative; z-index: 2; }
+
+  main{max-width:1000px; margin:0 auto; padding:20px 20px 80px; min-height:60vh;}
+  .feedback-btn-wrap { text-align: center; margin-bottom: 30px; }
+  .feedback-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: 13px; padding: 10px 24px; border-radius: 30px; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); margin: 0 5px; }
+  .feedback-btn:hover { background: #fff; color: var(--accent2); border-color: var(--accent2); box-shadow: 0 4px 15px rgba(216, 191, 170, 0.2); }
+  
+  .home-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;}
+  .home-card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:50px 24px; text-align:center; transition:.3s; text-decoration: none; color: var(--text); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+  .home-card.active-card { cursor:pointer; }
+  .home-card.active-card:hover{border-color:var(--accent2); transform:translateY(-5px); box-shadow: 0 10px 30px rgba(216, 191, 170, 0.15);}
+  .home-card h2{margin:0; font-size:22px; font-weight: 600; letter-spacing:2px; color: var(--text);}
+  
+  .sub-page{display:none;}
+  .sub-page.active{display:block;}
+  .back-btn{ background:none; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:8px 18px; font-size:13px; cursor:pointer; margin-bottom:24px; transition:.2s; background: var(--panel); }
+  .back-btn:hover{border-color:var(--accent); color:var(--accent);}
+  .sec-title{font-size:20px; font-weight:600; margin:0 0 6px; display:flex; align-items:center; gap:10px; color: var(--text);}
+  .sec-title::before{content:""; width:4px; height:18px; background:var(--accent2); border-radius:2px;}
+  .sec-desc{color:var(--muted); font-size:13px; margin:0 0 24px; display:flex; justify-content:space-between; align-items:center;}
+  
+  .cat-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
+  .cat-btn{ background:var(--panel); border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:8px 20px; font-size:14px; cursor:pointer; transition:.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  .cat-btn:hover{border-color:var(--accent); color:var(--text);}
+  .cat-btn.active{background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; box-shadow: 0 4px 10px rgba(178, 201, 182, 0.3);}
+  
+  .cat-btn.preview-btn { color: #b08d72; border-color: #e3d0c1; background: #fffaf6; text-decoration: none; display: inline-flex; align-items: center; margin-left: auto; }
+  .cat-btn.preview-btn:hover { background: #fff; border-color: var(--accent2); color: var(--accent2); }
+
+  .sub-cat-bar { display: none; gap:10px; flex-wrap:wrap; margin-bottom:16px; padding: 12px 16px; background: var(--panel2); border-radius: 12px; border: 1px dashed var(--line); }
+  .sub-cat-bar.show { display: flex; }
+  .sub-cat-btn { background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:16px; padding:6px 16px; font-size:13px; cursor:pointer; transition:.15s; }
+  .sub-cat-btn:hover { color: var(--text); border-color: var(--accent2); }
+  .sub-cat-btn.active { color: var(--accent2); border-color: var(--accent2); font-weight: 600; background: #fffaf6;}
+  .special-tip { color: var(--accent2); font-size: 13px; margin-bottom: 16px; display: none; font-weight: 600; letter-spacing: 0.5px;}
+  .special-tip.show { display: block; }
+  .char-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:16px; margin-top: 10px;}
+  .char-card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; display:flex; align-items:center; justify-content:space-between; padding: 12px 16px; transition: 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  .char-card:hover { border-color:var(--accent2); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05);}
+  .char-info { display: flex; flex-direction: column; justify-content: center; overflow: hidden; margin-right: 10px;}
+  .char-text{font-size:20px; font-weight:600; letter-spacing:1px; white-space: pre-wrap; color: var(--text); line-height: 1.2;}
+  .char-text small { font-size: 13px; font-weight: normal; color: var(--muted); letter-spacing: 0; margin-left: 2px; }
+  .char-subtip { font-size: 11px; color: #b0b5ae; margin-top: 4px; white-space: nowrap; transform: scale(0.9); transform-origin: left center;}
+  .copy-btn{ background:var(--panel2); border:1px solid var(--line); color:var(--muted); border-radius:8px; padding:4px 12px; font-size:12px; cursor:pointer; transition:.2s; white-space:nowrap; flex-shrink: 0; }
+  .copy-btn:hover{background:var(--accent2); border-color:var(--accent2); color:#fff;}
+  .dual-char { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .dual-row { display: flex; align-items: center; justify-content: space-between; }
+  .dual-row .char-text { font-size: 18px; }
+  
+  .search-wrap{margin-bottom:24px;}
+  .search-wrap input{ width:100%; background:var(--panel); border:1px solid var(--line); color:var(--text); border-radius:30px; padding:14px 24px; font-size:15px; outline:none; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+  .search-wrap input:focus{border-color:var(--accent); box-shadow: 0 4px 15px rgba(178, 201, 182, 0.2);}
+  
+  .title-list{display:flex; flex-direction:column; gap:12px;}
+  .title-item{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 20px; display:flex; flex-direction: column; gap:12px; transition: 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  .title-item:hover { border-color:var(--accent); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
+  
+  .title-row { display: flex; align-items: center; gap:12px; flex-wrap:wrap; width: 100%; }
+  .title-item .id-wrap { display:flex; align-items:center; gap:8px; font-size:15px; }
+  .title-item .id-wrap .label { color: var(--muted); }
+  .title-item .id-wrap .id-num { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--accent); font-weight: 600;}
+  .title-item .title-wrap { display: flex; align-items: center; gap: 6px; font-size: 15px; }
+  .title-item .title-wrap .icon { color: var(--accent2); font-size: 16px; }
+  .title-item .title-wrap .title-text { color: var(--text); font-weight: 600; }
+  
+  .title-item.risk{border-color:var(--danger); background:#fff5f5;}
+  .title-item .risk-tag{ color:var(--danger); font-size:12px; border:1px solid var(--danger); border-radius:6px; padding:2px 8px; margin-left:auto; }
+  
+  .history-toggle { font-size: 12px; color: var(--accent2); background: #fffaf6; border: 1px dashed var(--accent2); border-radius: 6px; padding: 2px 8px; cursor: pointer; margin-left: auto; user-select: none; transition: 0.2s; }
+  .history-toggle:hover { background: #fff; color: var(--accent); border-color: var(--accent); }
+  .history-content { display: none; background: var(--panel2); border-radius: 8px; padding: 10px 16px; font-size: 13px; color: var(--muted); border-left: 3px solid var(--accent2); margin-top: 4px; }
+  .history-content.show { display: block; }
+  .history-content span { color: var(--text); font-weight: 600; }
+
+  .no-result{color:var(--muted); font-size:14px; padding:20px 0; display:none;}
+  .post-toggle-wrap{margin-top:40px; text-align:center;}
+  .post-toggle{ display: inline-block; text-decoration: none; background:var(--accent2); color:#fff; border:none; border-radius:30px; padding:14px 40px; font-size:15px; font-weight:600; cursor:pointer; transition:.3s; box-shadow: 0 4px 15px rgba(216, 191, 170, 0.3); }
+  .post-toggle:hover{background:#e3cdbd; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(216, 191, 170, 0.4);}
+  .post-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap;}
+  .post-buttons .post-toggle { padding: 12px 30px; font-size: 14px; }
+  
+  .horoscope-constellation-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+  .h-sc-btn { background: var(--panel); border: 1px solid var(--line); color: var(--text); padding: 8px 20px; border-radius: 20px; font-size: 14px; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  .h-sc-btn:hover { border-color: var(--accent2); }
+  .h-sc-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; box-shadow: 0 4px 10px rgba(178, 201, 182, 0.4); }
+  .horoscope-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: none; flex-direction: column; gap: 20px; }
+  .horoscope-card.show { display: flex; }
+  .h-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 20px; }
+  .h-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .h-title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; }
+  .h-date { font-size: 13px; color: var(--muted); }
+  .h-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .h-stat-item { background: var(--bg); border-radius: 12px; padding: 16px; text-align: center; }
+  .h-stat-label { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .h-stat-value { font-size: 18px; font-weight: 700; color: var(--accent2); }
+  .h-fortune-content { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .h-fortune-title { font-weight: 700; font-size: 16px; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;}
+  .h-summary-section { margin-bottom: 12px; background: var(--bg); padding: 16px; border-radius: 12px; }
+  .h-summary-label { font-weight: 700; font-size: 14px; color: var(--accent2); margin-bottom: 6px;}
+  
+  .sim-panel { background: var(--panel); border: 1px solid var(--accent2); border-radius: 12px; padding: 24px; margin-top: 10px; box-shadow: 0 4px 15px rgba(216, 191, 170, 0.1); }
+  .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+  .sim-group { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .sim-label-row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .sim-label-row label { font-weight: 600; color: var(--text); }
+  .sim-label-row .sim-sub-label { font-size: 11px; color: var(--muted); margin-left: 8px; }
+  .sim-select-row { display: flex; gap: 10px; }
+  .sim-select-row select { padding: 10px 30px 10px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel2); font-size: 14px; color: var(--text); outline: none; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b9088' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 14px; }
+  .sim-select-row select.main-select { flex: 1; }
+  .sim-select-row select.level-select { width: 90px; flex-shrink: 0; }
+  .sim-btn { background: var(--accent2); color: #fff; border: none; border-radius: 20px; padding: 14px 30px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; box-shadow: 0 4px 10px rgba(216, 191, 170, 0.3); }
+  .sim-btn:hover { background: #e3cdbd; transform: translateY(-2px); }
+  .sim-result { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+  .sim-result-card { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 24px; text-align: center; display: flex; flex-direction: column; }
+  .sim-result-card h4 { margin: 0 0 16px; color: var(--accent2); font-size: 18px; border-bottom: 1px dashed var(--line); padding-bottom: 12px; }
+  .best-crop { font-size: 26px; font-weight: 800; color: var(--danger); margin-bottom: 12px; text-shadow: 0 2px 5px rgba(217, 136, 128, 0.2); }
+  .sim-detail { font-size: 13px; color: var(--muted); line-height: 2; text-align: left; background: #fff; padding: 16px; border-radius: 8px; flex: 1; }
+  .sim-detail-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #f0efe9; padding-bottom: 4px; margin-bottom: 4px;}
+  .sim-detail-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+  .sim-detail-row span:last-child { color: var(--text); font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .math-formula { font-size: 12px; color: #a0a59e; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; display: block; margin-top: 2px; }
+  .recommend-box { background: #fff8f0; border: 1px dashed #d8bfaa; border-radius: 8px; padding: 16px; margin-top: 16px; font-size: 13px; color: var(--text); line-height: 1.8; text-align: left; }
+  .recommend-box strong { color: var(--danger); }
+  .best-global-box { margin-top: 30px; background: #eef2ef; border: 2px solid var(--accent); border-radius: 12px; padding: 24px; text-align: center; box-shadow: 0 4px 15px rgba(178, 201, 182, 0.2); }
+  .best-global-box h3 { margin: 0 0 16px; color: var(--accent2); font-size: 20px; }
+  .best-global-box p { margin: 8px 0; font-size: 15px; }
+  .best-global-box strong { color: var(--danger); font-size: 18px; }
+  .best-explain { font-size: 13px; color: #777; text-align: left; background: #fff; padding: 12px 16px; border-radius: 8px; margin-top: 16px; border: 1px dashed #d8bfaa; }
+  
+  .dynamic-desc-box { background: #f9f8f4; border: 1px dashed #e6e4db; border-radius: 8px; padding: 8px 12px; margin-top: 8px; font-size: 12px; color: var(--accent2); line-height: 1.6; }
+  
+  details.custom-details { margin-top: 24px; background: #fffaf6; border: 1px dashed var(--accent2); border-radius: 12px; font-size: 13px; color: var(--muted); line-height: 1.8; overflow: hidden; }
+  details.custom-details summary { padding: 16px; font-weight: 600; color: var(--accent2); font-size: 14px; cursor: pointer; user-select: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+  details.custom-details summary::-webkit-details-marker { display: none; }
+  details.custom-details summary::before { content: "▶"; font-size: 10px; transition: transform 0.2s; }
+  details.custom-details[open] summary::before { transform: rotate(90deg); }
+  .details-content { padding: 0 16px 16px 16px; border-top: 1px dashed #e6e4db; padding-top: 12px; }
+  
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; background: #fff; border-radius: 8px; overflow: hidden; margin-top: 10px;}
+  .compare-table th { background: var(--panel2); padding: 10px; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--line); }
+  .compare-table td { padding: 10px; border-bottom: 1px solid var(--line); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .highlight { color: var(--danger); font-weight: 700; background: #fffaf6; }
+
+  footer{ width: 100%; text-align:center; color:var(--muted); font-size:13px; padding:40px 20px; border-top:1px solid var(--line); line-height: 1.8; background: #f0efe9; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  footer .footer-line1 { margin-bottom: 8px; color: var(--text); font-weight: 500;}
+  footer .footer-line2 { font-size: 12px; opacity: 0.7; }
+  @media (max-width: 768px) {
+    .home-grid { grid-template-columns: 1fr; }
+    .post-buttons { flex-direction: column; gap: 10px; }
+    .title-bg { font-size: 90px; }
+    header h1 { font-size: 26px; }
+    .h-stats { grid-template-columns: 1fr; }
+    .cat-btn.preview-btn { margin-left: 0; width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-container">
+    <div class="title-bg">Naraka</div>
+    <h1>永劫无间工具站</h1>
+  </div>
+  <div class="title-sub">BLADEPOINT</div>
+  <div class="title-cats">特殊字符 · 称号收录 · 农场攻略 · 今日星运</div>
+  <div class="sig">收集整理 · 观月抱云</div>
+  <div class="platform-notice">本站所有数据适用于永劫无间端游官服，手游玩家请自行检查是否可用。</div>
+  <div class="header-share-wrap">
+    <span class="share-text">觉得好用？点击分享给好友：</span>
+    <button class="share-icon-btn" data-copy="https://yongjieidgjz-3p663a3.maozi.io/" title="复制网站链接">🔗</button>
+  </div>
+</header>
+
+<main>
+  <div id="homePage">
+    <div class="feedback-btn-wrap">
+      <a href="https://iq0o7fpo.jsjform.com/f/X3euW6" target="_blank" class="feedback-btn">✉️ 意见反馈 / 提建议</a>
+    </div>
+    <div class="home-grid">
+      <div class="home-card active-card" data-nav="specialPage"><h2>特殊字符</h2></div>
+      <div class="home-card active-card" data-nav="titlePage"><h2>爱心称号</h2></div>
+      <div class="home-card active-card" data-nav="horoscopePage"><h2>今日星运</h2></div>
+      <div class="home-card active-card" data-nav="farmPage"><h2>白泽农场</h2></div>
+    </div>
+  </div>
+
+  <div id="farmPage" class="sub-page">
+    <button class="back-btn" data-back>← 返回首页</button>
+    <h2 class="sec-title">白泽农场收益模拟器</h2>
+    <p class="sec-desc">自由搭配神通与仙宝，计算最高收益种植方案</p>
+    <div class="sim-panel">
+      <div class="sim-grid">
+        <div class="sim-group" style="grid-column: 1 / -1;">
+          <div class="sim-label-row"><label>当前天气</label></div>
+          <div class="sim-select-row">
+            <select id="simWeather" class="main-select" onchange="updateWeatherInfo()"></select>
+          </div>
+          <div class="dynamic-desc-box" id="descWeather"></div>
+        </div>
+        <div class="sim-group">
+          <div class="sim-label-row"><label>1号槽【神通】</label></div>
+          <div class="sim-select-row">
+            <select id="simFairy" class="main-select" onchange="updateFairyInfo()">
+              <option value="none">无</option>
+            </select>
+            <select id="simFairyLv" class="level-select" onchange="updateFairyInfo()"></select>
+          </div>
+          <div class="dynamic-desc-box" id="descFairy"></div>
+        </div>
+        <div class="sim-group">
+          <div class="sim-label-row"><label>2号槽【仙宝】</label></div>
+          <div class="sim-select-row">
+            <select id="simMagic" class="main-select" onchange="updateMagicInfo()">
+              <option value="none">无</option>
+            </select>
+            <select id="simMagicLv" class="level-select" onchange="updateMagicInfo()"></select>
+          </div>
+          <div class="dynamic-desc-box" id="descMagic"></div>
+        </div>
+        <div class="sim-group">
+          <div class="sim-label-row"><label>白泽灵根</label></div>
+          <div class="sim-select-row">
+            <select id="simPet" class="main-select" onchange="updatePetInfo()">
+              <option value="none">无</option>
+            </select>
+            <select id="simPetLv" class="level-select" onchange="updatePetInfo()"></select>
+          </div>
+          <div class="dynamic-desc-box" id="descPet"></div>
+        </div>
+      </div>
+      <button class="sim-btn" onclick="calculateFarm()">计算当前配置收益</button>
+      
+      <div class="sim-result" id="simResultArea" style="display: none;">
+        <div class="sim-result-card">
+          <h4>一天收1次 (单次最大利润)</h4>
+          <div class="best-crop" id="bestCrop1">-</div>
+          <div class="sim-detail" id="detail1"></div>
+          <div class="recommend-box" id="recommend1"></div>
+        </div>
+        <div class="sim-result-card">
+          <h4>一天收2次 (最高时均利润)</h4>
+          <div class="best-crop" id="bestCrop2">-</div>
+          <div class="sim-detail" id="detail2"></div>
+          <div class="recommend-box" id="recommend2"></div>
+        </div>
+      </div>
+
+      <details class="custom-details" id="compareDetails" style="display:none;">
+        <summary>📊 点击查看【当前配置下所有作物】收益对比</summary>
+        <div class="details-content">
+          <table class="compare-table" id="compareTable">
+            <thead>
+              <tr>
+                <th>作物名称</th>
+                <th>最终产量/单价</th>
+                <th>基础单次收益</th>
+                <th>暴击期望收益</th>
+                <th>时均期望收益</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="best-global-box" id="globalBestBox" style="display: none;">
+        <h3>当前天气下的【最优搭配推荐】</h3>
+        <p>综合时均收益最高的组合为：</p>
+        <p>种植 <strong id="g-best-crop">-</strong> ｜ 神通 <strong id="g-best-fairy">-</strong> ｜ 仙宝 <strong id="g-best-magic">-</strong></p>
+        <p style="font-size: 14px; color: var(--muted);">可达到单次收益：<span id="g-best-profit" style="color:var(--danger);font-weight:600;">-</span> 丰收币，时均收益：<span id="g-best-rate" style="color:var(--danger);font-weight:600;">-</span> / 小时</p>
+        <div class="best-explain" id="bestExplain"></div>
+      </div>
+
+      <details class="custom-details">
+        <summary>🔍 关于暴击与期望收益说明（点击展开）</summary>
+        <div class="details-content">
+          <div>• <b>基础暴击率：5%</b>（所有作物默认拥有 5% 概率触发暴击，产量翻倍）。</div>
+          <div>• <b>雷击木：</b>当作物受天气负面影响时，拥有触发暴击的概率。此机制与基础暴击属于<b>独立判定</b>。最终触发暴击的概率为：<code>1 - (1 - 基础概率) × (1 - 雷击木概率)</code>，两者不会叠加成 4 倍产量。</div>
+          <div>• <b>丰收骰子：</b>触发时产量 ×1.5，属于<b>概率触发</b>。本模拟器按期望计算：<code>期望产量 × (1 + 触发概率 × 0.5)</code>。</div>
+          <div>• <b>虫害机制：</b>植物旁出现【虫害】标志时，点击除虫可避免减产 1 产出。本模拟器基于<b>及时除虫后的正常产量</b>进行理论计算，因此未额外增加或扣除产量。（*注：弱光天气下更易出现虫害*）</div>
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e6e4db;">
+            <b>📐 算法结算顺序（以艳阳天种植蓝莓为例）：</b><br>
+            实测数据“非暴击 54，暴击 108”证明了当前游戏机制：<br><br>
+            <b>算法 1：先吃天气加成，再判定暴击（目前代码采用此计算方式）</b><br>
+            <code>① 基础产量 60 → 受艳阳天高温惩罚 -10% (× 0.9) = 54 → 非暴击产量：54</code><br>
+            <code>② 若触发暴击，在 54 的基础上直接翻倍 → 暴击产量：108</code><br>
+            <code>③ 期望产量 = 最终产量 54 × (1 + 总暴击率)</code><br><br>
+            
+            <b>算法 2：先吃暴击加成，最后受天气削减</b><br>
+            <code>① 基础产量 60 → 若触发暴击，先翻倍 = 120</code><br>
+            <code>② 受到艳阳天高温惩罚 -10% = 108 → 暴击产量：108</code><br>
+            <code>③ 若未触发暴击，产量直接吃天气惩罚 = 54 → 非暴击产量：54</code><br>
+            <span style="color:var(--accent2);">* 说明：这两种算法在数学结果上是完全等效的。因此我们采用算法 1 的逻辑计算期望收益。</span>
+          </div>
+        </div>
+      </details>
+
+      <div style="font-size: 12px; color: var(--muted); margin-top: 20px; text-align: center;">* 注：此模拟器基于当前选择的理论数值计算，最终收益已扣除种子成本。</div>
+    </div>
+  </div>
+
+  <div id="specialPage" class="sub-page">
+    <button class="back-btn" data-back>← 返回首页</button>
+    <h2 class="sec-title">特殊字符</h2>
+    <div class="sec-desc">
+      <span>选择分类查看字符，点击按钮一键复制。</span>
+      <button id="refreshCharBtn" style="background:none; border:1px solid var(--accent2); color:var(--accent2); border-radius:20px; padding:4px 12px; font-size:12px; cursor:pointer;">刷新数据</button>
+    </div>
+    <div class="cat-bar" id="catBar"></div>
+    <div class="sub-cat-bar" id="subCatBar"></div>
+    <div class="sub-cat-bar" id="subSubCatBar"></div>
+    <div class="special-tip" id="symbolTip">* 部分符号手机端无法显示哦！</div>
+    <div class="special-tip" id="specialTip">* 卡片内上行为标准原字，下行为仿版形近字，请根据需求点击对应复制按钮。</div>
+    <div class="special-tip" id="comboTip">* 这个其实是算一个字符的哦</div>
+    <div class="char-grid" id="charGrid"><p style="color:var(--muted);font-size:14px;">正在读取字符数据...</p></div>
+    <div class="post-toggle-wrap"><a href="https://iq0o7fpo.jsjform.com/f/Bc9Ubi" target="_blank" class="post-toggle">我要投稿</a></div>
+  </div>
+
+  <div id="titlePage" class="sub-page">
+    <button class="back-btn" data-back>← 返回首页</button>
+    <h2 class="sec-title">爱心称号</h2>
+    <div class="sec-desc">
+      <span>称号均已核实，如有更改请点“更正”，不想被收录请点“下架反馈”。</span>
+      <button id="refreshTitleBtn" style="background:none; border:1px solid var(--accent2); color:var(--accent2); border-radius:20px; padding:4px 12px; font-size:12px; cursor:pointer;">刷新数据</button>
+    </div>
+    <div class="search-wrap"><input type="text" id="titleSearch" placeholder="搜索游戏数字ID 或 称号…"></div>
+    <div class="cat-bar" id="titleCatBar"></div>
+    <div class="title-list" id="titleList"><p style="color:var(--muted);font-size:14px;">正在读取称号数据...</p></div>
+    <div class="no-result" id="noResult">没有找到匹配的称号。</div>
+    <div class="post-buttons">
+      <a href="https://iq0o7fpo.jsjform.com/f/h92jfw" target="_blank" class="post-toggle">投稿称号</a>
+      <a href="https://iq0o7fpo.jsjform.com/f/r5beKT" target="_blank" class="post-toggle">更正称号信息</a>
+      <a href="https://iq0o7fpo.jsjform.com/f/joTAyN" target="_blank" class="post-toggle">下架反馈</a>
+    </div>
+  </div>
+
+  <div id="horoscopePage" class="sub-page">
+    <button class="back-btn" data-back>← 返回首页</button>
+    <h2 class="sec-title">今日星运</h2>
+    <div class="sec-desc">
+      <span>每日运势皆在此时光中沉淀，愿你今日好运常伴。</span>
+      <button id="refreshHoroscopeBtn" style="background:none; border:1px solid var(--accent2); color:var(--accent2); border-radius:20px; padding:4px 12px; font-size:12px; cursor:pointer;">刷新数据</button>
+    </div>
+    <div class="horoscope-constellation-bar" id="h-sc-bar"></div>
+    <div class="horoscope-card" id="h-card">
+      <div class="h-header"><div class="h-title-wrap"><div><h3 class="h-title" id="h-title">白羊座</h3><div class="h-date" id="h-date">本周运势</div></div></div></div>
+      <div class="h-stats">
+        <div class="h-stat-item"><div class="h-stat-label">综合指数</div><div class="h-stat-value" id="h-comprehensive">-</div></div>
+        <div class="h-stat-item"><div class="h-stat-label">爱情指数</div><div class="h-stat-value" id="h-love">-</div></div>
+        <div class="h-stat-item"><div class="h-stat-label">事业指数</div><div class="h-stat-value" id="h-career">-</div></div>
+        <div class="h-stat-item"><div class="h-stat-label">幸运颜色</div><div class="h-stat-value" id="h-color">-</div></div>
+        <div class="h-stat-item"><div class="h-stat-label">幸运数字</div><div class="h-stat-value" id="h-number">-</div></div>
+        <div class="h-stat-item"><div class="h-stat-label">贵人星座</div><div class="h-stat-value" id="h-god">-</div></div>
+      </div>
+      <div class="h-fortune-content">
+        <div class="h-fortune-title">今日运势详解</div>
+        <div id="h-summary">正在读取数据...</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-line1">永劫无间工具站 · 由小红书 观月抱云 个人收集整理 仅供参考交流 请勿倒卖盈利</div>
+  <div class="footer-line2">QQ群：417830341 &nbsp;|&nbsp; 永劫ID：12861900000163</div>
+</footer>
+
+<script>
+/* ========== 页面跳转与统计追踪 ========== */
+const homePage = document.getElementById('homePage');
+const pages = { 
+  specialPage: document.getElementById('specialPage'), 
+  titlePage: document.getElementById('titlePage'), 
+  horoscopePage: document.getElementById('horoscopePage'), 
+  farmPage: document.getElementById('farmPage') 
+};
+
+document.querySelectorAll('[data-nav]').forEach(card => {
+  card.addEventListener('click', () => {
+    homePage.style.display = 'none';
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    
+    const targetPage = card.dataset.nav;
+    document.getElementById(targetPage).classList.add('active');
+    window.scrollTo(0, 0);
+
+    // 触发 51.LA 的自定义点击事件
+    if (window.LA) {
+      const pageNames = {
+        'specialPage': '特殊字符',
+        'titlePage': '爱心称号',
+        'horoscopePage': '今日星运',
+        'farmPage': '白泽农场'
+      };
+      LA.track('点击板块', { module: pageNames[targetPage] || targetPage });
+    }
+  });
+});
+document.querySelectorAll('[data-back]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    homePage.style.display = 'grid';
+    window.scrollTo(0, 0);
+  });
+});
+
+/* ========== 数据加载 ========== */
+let charsData = null, titlesData = null, horoscopeData = null;
+let farmData = null;
+
+async function fetchJSON(filename) {
+  const response = await fetch(filename + '?v=' + new Date().getTime());
+  if (!response.ok) throw new Error(`无法加载 ${filename}`);
+  return await response.json();
+}
+
+async function loadFarm(forceRefresh = false) {
+  if (!farmData || forceRefresh) {
+    try {
+      farmData = await fetchJSON('farm.json');
+      if (farmData.weathers && !farmData.weathers.windy) {
+        farmData.weathers.windy = {
+          "name": "风和日丽",
+          "light": "none",
+          "temperature": "none",
+          "humidity": "none",
+          "desc": "风和日丽：无任何天气加成或减益。"
+        };
+      }
+    } catch (e) {
+      console.error('farm.json 加载失败', e);
+      farmData = { weathers: {}, crops: [], fairies: {}, magics: {}, pets: {} };
+    }
+  }
+  initFarmUI();
+}
+
+/* ========== 特殊字符 ========== */
+const catBar = document.getElementById('catBar');
+const subCatBar = document.getElementById('subCatBar');
+const subSubCatBar = document.getElementById('subSubCatBar');
+const specialTip = document.getElementById('specialTip');
+const symbolTip = document.getElementById('symbolTip');
+const comboTip = document.getElementById('comboTip');
+const charGrid = document.getElementById('charGrid');
+let categories = [], activeCat = "", activeSubCat = null, activeSubSubCat = null;
+
+async function loadChars(forceRefresh = false) {
+  if (!charsData || forceRefresh) {
+    charGrid.innerHTML = `<p style="color:var(--muted);font-size:14px;">正在读取字符数据...</p>`;
+    try {
+      charsData = await fetchJSON('chars.json');
+      categories = Object.keys(charsData);
+      activeCat = categories[0];
+      const catData = charsData[activeCat];
+      activeSubCat = Array.isArray(catData) ? null : Object.keys(catData)[0];
+      if (activeCat === "特殊英文" && activeSubCat) activeSubSubCat = Object.keys(catData[activeSubCat])[0];
+    } catch (e) {
+      charGrid.innerHTML = `<p style="color:var(--danger);font-size:14px;">字符数据加载失败，请检查 chars.json 是否存在且格式正确。</p>`;
+      return;
+    }
+  }
+  renderCatBar(); renderSubCatBar(); renderChars();
+}
+function renderCatBar(){
+  catBar.innerHTML = '';
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (cat === activeCat ? ' active' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', () => {
+      activeCat = cat;
+      const catData = charsData[activeCat];
+      activeSubCat = Array.isArray(catData) ? null : Object.keys(catData)[0];
+      if (activeCat === "特殊英文" && activeSubCat) activeSubSubCat = Object.keys(catData[activeSubCat])[0];
+      else activeSubSubCat = null;
+      renderCatBar(); renderSubCatBar(); renderChars();
+    });
+    catBar.appendChild(btn);
+  });
+  
+  const previewBtn = document.createElement('a');
+  previewBtn.href = "https://docs.qq.com/sheet/DVmNpVG12SFBYYWRW?tab=ntwfun";
+  previewBtn.target = "_blank";
+  previewBtn.className = 'cat-btn preview-btn';
+  previewBtn.innerHTML = '预览版';
+  catBar.appendChild(previewBtn);
+}
+function renderSubCatBar(){
+  subCatBar.innerHTML = '';
+  subSubCatBar.classList.remove('show');
+  const catData = charsData[activeCat];
+  if (catData && !Array.isArray(catData)) {
+    subCatBar.classList.add('show');
+    Object.keys(catData).forEach(sub => {
+      const btn = document.createElement('button');
+      btn.className = 'sub-cat-btn' + (sub === activeSubCat ? ' active' : '');
+      btn.textContent = sub;
+      btn.addEventListener('click', () => {
+        activeSubCat = sub;
+        if (activeCat === "特殊英文" && !Array.isArray(catData[sub])) activeSubSubCat = Object.keys(catData[sub])[0];
+        else activeSubSubCat = null;
+        renderSubCatBar(); renderChars();
+      });
+      subCatBar.appendChild(btn);
+    });
+  } else subCatBar.classList.remove('show');
+}
+function renderSubSubCatBar(){
+  subSubCatBar.innerHTML = '';
+  if (activeCat === "特殊英文" && activeSubCat) {
+    const subData = charsData["特殊英文"][activeSubCat];
+    if (subData && !Array.isArray(subData)) {
+      subSubCatBar.classList.add('show');
+      Object.keys(subData).forEach(sub => {
+        const btn = document.createElement('button');
+        btn.className = 'sub-cat-btn' + (sub === activeSubSubCat ? ' active' : '');
+        btn.textContent = sub;
+        btn.addEventListener('click', () => { activeSubSubCat = sub; renderSubSubCatBar(); renderChars(); });
+        subSubCatBar.appendChild(btn);
+      });
+    }
+  }
+}
+function renderChars(){
+  renderSubSubCatBar();
+  charGrid.innerHTML = '';
+  specialTip.classList.toggle('show', activeCat === "仿版汉字");
+  symbolTip.classList.toggle('show', activeCat === "特殊符号");
+  comboTip.classList.toggle('show', activeCat === "特殊英文" && activeSubCat === "组合字母");
+  let list = [];
+  const catData = charsData[activeCat];
+  if (!catData) return;
+  if (Array.isArray(catData)) list = catData;
+  else if (activeCat === "特殊英文" && activeSubCat) {
+    const subData = catData[activeSubCat];
+    if (Array.isArray(subData)) list = subData;
+    else if (subData && activeSubSubCat) list = subData[activeSubSubCat];
+  } else if (activeSubCat) list = catData[activeSubCat];
+  if (!list || !list.length) { charGrid.innerHTML = `<p style="color:var(--muted);font-size:14px;">该分类暂无字符。</p>`; return; }
+  list.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'char-card';
+    let bodyHTML = '';
+    if (activeCat === "仿版汉字") {
+      const displayChar = item.char.replace(/([\(（].*?[\)）])/g, '<small>$1</small>');
+      const displaySubChar = (item.subChar || item.char).replace(/([\(（].*?[\)）])/g, '<small>$1</small>');
+      bodyHTML = `<div class="dual-char"><div class="dual-row"><span class="char-text">${displayChar}</span><button class="copy-btn" data-copy="${item.char}">复制</button></div><div class="dual-row"><span class="char-text">${displaySubChar}</span><button class="copy-btn" data-copy="${item.subChar || item.char}">复制</button></div></div>`;
+    } else {
+      const subtipHTML = item.subtip ? `<div class="char-subtip">${item.subtip}</div>` : '';
+      bodyHTML = `<div class="char-info"><span class="char-text">${item.char}</span>${subtipHTML}</div><button class="copy-btn" data-copy="${item.char}">复制</button>`;
+    }
+    card.innerHTML = bodyHTML;
+    charGrid.appendChild(card);
+  });
+}
+
+/* ========== 称号 ========== */
+const titleCatBar = document.getElementById('titleCatBar');
+const titleList = document.getElementById('titleList');
+const titleCategories = ["全部", "一字", "二字", "三字", "四字", "多字", "英文"];
+let activeTitleCat = "全部";
+async function loadTitles(forceRefresh = false) {
+  if (!titlesData || forceRefresh) {
+    titleList.innerHTML = `<p style="color:var(--muted);font-size:14px;">正在读取称号数据...</p>`;
+    try { titlesData = await fetchJSON('titles.json'); } catch (e) { titleList.innerHTML = `<p style="color:var(--danger);font-size:14px;">称号数据加载失败，请检查 titles.json。</p>`; return; }
+  }
+  renderTitleCatBar(); renderTitles();
+}
+function getTitleCategory(title) {
+  if (/^[a-zA-Z]+$/.test(title)) return "英文";
+  const len = title.length;
+  if (len === 1) return "一字"; if (len === 2) return "二字"; if (len === 3) return "三字"; if (len === 4) return "四字"; return "多字";
+}
+function renderTitleCatBar() {
+  titleCatBar.innerHTML = '';
+  titleCategories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (cat === activeTitleCat ? ' active' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', () => { activeTitleCat = cat; renderTitleCatBar(); renderTitles(); });
+    titleCatBar.appendChild(btn);
+  });
+}
+function renderTitles() {
+  if (!titlesData) return;
+  const kw = document.getElementById('titleSearch').value.trim().toLowerCase();
+  titleList.innerHTML = '';
+  let count = 0;
+  titlesData.forEach(item => {
+    const matchKeyword = !kw || item.id.toLowerCase().includes(kw) || item.title.toLowerCase().includes(kw);
+    const matchCategory = activeTitleCat === "全部" || getTitleCategory(item.title) === activeTitleCat;
+    if (matchKeyword && matchCategory) {
+      count++;
+      const div = document.createElement('div');
+      div.className = 'title-item' + (item.risk ? ' risk' : '');
+      
+      let historyHTML = '';
+      if (item.history && item.history.length > 0) {
+        const historyList = item.history.map(h => `<span>${h}</span>`).join(' → ');
+        historyHTML = `
+          <div class="history-toggle" onclick="this.nextElementSibling.classList.toggle('show')">🔄 近期修改过</div>
+          <div class="history-content">历史称号：${historyList} → 当前：<span>${item.title}</span></div>
+        `;
+      }
+
+      div.innerHTML = `
+        <div class="title-row">
+          <div class="id-wrap"><span class="label">游戏数字ID：</span><span class="id-num">${item.id}</span><button class="copy-btn" data-copy="${item.id}">复制</button></div>
+          <div class="title-wrap"><span class="icon">❤️</span><span class="label">称号：</span><span class="title-text">${item.title}</span></div>
+          ${item.risk ? `<span class="risk-tag">${item.riskNote || '风险称号'}</span>` : ''}
+          ${historyHTML}
+        </div>
+      `;
+      titleList.appendChild(div);
+    }
+  });
+  document.getElementById('noResult').style.display = count ? 'none' : 'block';
+}
+
+/* ========== 星座（周历版） ========== */
+const zodiacSigns = ["白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"];
+const weekdayMap = ['周日','周一','周二','周三','周四','周五','周六'];
+const scBar = document.getElementById('h-sc-bar');
+const hCard = document.getElementById('h-card');
+async function loadHoroscope(forceRefresh = false) {
+  if (!horoscopeData || forceRefresh) {
+    document.getElementById('h-summary').innerHTML = "正在读取星运数据...";
+    try { horoscopeData = await fetchJSON('horoscope.json'); } catch (e) { document.getElementById('h-summary').textContent = "数据加载失败，请检查 horoscope.json。"; return; }
+  }
+  if (scBar.innerHTML === '') {
+    zodiacSigns.forEach((sign, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'h-sc-btn'; btn.textContent = sign;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.h-sc-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active'); displayHoroscope(sign);
+      });
+      scBar.appendChild(btn);
+      if (index === 0) btn.classList.add('active');
+    });
+  }
+  const activeBtn = document.querySelector('.h-sc-btn.active');
+  displayHoroscope(activeBtn ? activeBtn.textContent : zodiacSigns[0]);
+}
+function displayHoroscope(signName) {
+  hCard.classList.add('show');
+  document.getElementById('h-title').textContent = signName;
+  const now = new Date();
+  const todayWeekday = weekdayMap[now.getDay()];
+  document.getElementById('h-date').textContent = `${todayWeekday} · ${now.toLocaleDateString()}`;
+  if (!horoscopeData) return;
+  const dayData = horoscopeData[todayWeekday];
+  if (!dayData) {
+    document.getElementById('h-summary').textContent = `本周（${todayWeekday}）数据暂未更新，请稍后再来。`;
+    return;
+  }
+  const body = dayData[signName];
+  if (body) {
+    const getStars = (num) => { let n = parseInt(num); if (isNaN(n)) return num; if (n>=4) return "⭐⭐⭐⭐⭐"; if (n===3) return "⭐⭐⭐⭐"; if (n===2) return "⭐⭐⭐"; if (n===1) return "⭐⭐"; return "⭐"; };
+    document.getElementById('h-comprehensive').textContent = getStars(body.all);
+    document.getElementById('h-love').textContent = getStars(body.love);
+    document.getElementById('h-career').textContent = getStars(body.work);
+    document.getElementById('h-color').textContent = body.color || "无";
+    document.getElementById('h-number').textContent = body.number || "无";
+    document.getElementById('h-god').textContent = body.QFriend || "无";
+    document.getElementById('h-summary').innerHTML = `<div class="h-summary-section"><div class="h-summary-label">综合运势</div><div>${body.summary || '今日运势平稳。'}</div></div><div class="h-summary-section"><div class="h-summary-label">爱情运势</div><div>${body.love_text || '感情方面顺其自然即可。'}</div></div><div class="h-summary-section"><div class="h-summary-label">事业运势</div><div>${body.work_text || '工作方面按部就班即可。'}</div></div><div class="h-summary-section" style="margin-bottom:0;"><div class="h-summary-label">财富运势</div><div>${body.money_text || '财运方面不宜盲目投资。'}</div></div>`;
+  } else document.getElementById('h-summary').textContent = "未找到该星座的信息。";
+}
+
+/* ========== 农场模拟器 ========== */
+function initFarmUI() {
+  if (!farmData) return;
+  const weatherSel = document.getElementById('simWeather');
+  weatherSel.innerHTML = '';
+  Object.keys(farmData.weathers || {}).forEach(key => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = farmData.weathers[key].name;
+    weatherSel.appendChild(opt);
+  });
+  
+  const fairySel = document.getElementById('simFairy');
+  fairySel.innerHTML = '<option value="none">无</option>';
+  Object.keys(farmData.fairies || {}).forEach(key => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = farmData.fairies[key].name;
+    fairySel.appendChild(opt);
+  });
+  
+  const magicSel = document.getElementById('simMagic');
+  magicSel.innerHTML = '<option value="none">无</option>';
+  Object.keys(farmData.magics || {}).forEach(key => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = farmData.magics[key].name;
+    magicSel.appendChild(opt);
+  });
+  
+  const petSel = document.getElementById('simPet');
+  petSel.innerHTML = '<option value="none">无</option>';
+  Object.keys(farmData.pets || {}).forEach(key => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = farmData.pets[key].name;
+    petSel.appendChild(opt);
+  });
+  
+  initLevelSelects();
+  
+  if (weatherSel.querySelector('option[value="windy"]')) {
+    weatherSel.value = 'windy';
+  }
+  
+  updateWeatherInfo(); updateFairyInfo(); updateMagicInfo(); updatePetInfo();
+}
+
+function initLevelSelects() {
+  const levels = [1,2,3,4,5,6,7,8,9,10];
+  ['simFairyLv','simMagicLv','simPetLv'].forEach(id => {
+    const select = document.getElementById(id);
+    select.innerHTML = levels.map(lv => `<option value="${lv}" ${lv===10?'selected':''}>${lv}级</option>`).join('');
+  });
+}
+
+function updateWeatherInfo() {
+  const w = document.getElementById('simWeather').value;
+  const box = document.getElementById('descWeather');
+  const info = farmData && farmData.weathers ? farmData.weathers[w] : null;
+  box.innerHTML = info && info.desc ? info.desc : '';
+}
+function updateFairyInfo() {
+  const f = document.getElementById('simFairy').value;
+  const lv = parseInt(document.getElementById('simFairyLv').value);
+  const box = document.getElementById('descFairy');
+  if (f === 'none' || !farmData) { box.innerHTML = '未装备神通'; return; }
+  const data = farmData.fairies[f];
+  if (!data) { box.innerHTML = ''; return; }
+  let text = '';
+  if (f === 'clock') text = `缩短作物生长时间 ${data.values[lv-1]} 分钟`;
+  if (f === 'dice') text = `种植时 ${(data.values[lv-1]*100).toFixed(0)}% 概率产量×1.5（期望 +${(data.values[lv-1]*0.5*100).toFixed(1)}%）`;
+  if (f === 'thunder') text = `受天气负面影响时，${(data.values[lv-1]*100).toFixed(0)}% 概率变为暴击植物`;
+  if (f === 'miao') text = `相邻甘蔗作物增加 ${data.values[lv-1]} 产量且免疫强光惩罚`;
+  if (f === 'fate') text = `每日可获得 ${data.values[lv-1]} 次免费施肥`;
+  if (f === 'thief') text = `使用神偷手时，${(data.values[lv-1]*100).toFixed(0)}% 概率不消耗（弱光额外+8%）`;
+  box.innerHTML = text;
+}
+function updateMagicInfo() {
+  const m = document.getElementById('simMagic').value;
+  const lvSelect = document.getElementById('simMagicLv');
+  if (m === 'brush') {
+    if (lvSelect.options.length !== 2) lvSelect.innerHTML = `<option value="1">1级</option><option value="2" selected>2级</option>`;
+    lvSelect.disabled = false;
+  } else {
+    if (lvSelect.options.length !== 10) lvSelect.innerHTML = [1,2,3,4,5,6,7,8,9,10].map(l => `<option value="${l}" ${l===10?'selected':''}>${l}级</option>`).join('');
+    lvSelect.disabled = false;
+  }
+  const lv = parseInt(lvSelect.value);
+  const box = document.getElementById('descMagic');
+  if (m === 'none' || !farmData) { box.innerHTML = '未装备仙宝'; return; }
+  const data = farmData.magics[m];
+  if (!data) { box.innerHTML = ''; return; }
+  let text = '';
+  if (m === 'ruyi') text = `天气正面效果提升 ${(data.values[lv-1]*100).toFixed(0)}%`;
+  if (m === 'brush') {
+    const d = data.values[lv-1];
+    text = `白菜产量+${d.baicai.y}、单价+${d.baicai.p}；萝卜生长${d.luobo.t}h；辣椒单价+${d.lajiao.p}；甘蔗生长+${d.ganzhe.t}h、产量+${d.ganzhe.y}；蘑菇生长${d.mogu.t}h；蓝莓单价+${d.lanmei.p}`;
+  }
+  if (m === 'gourd') text = `成熟后额外生长 2 小时，增加 ${data.values[lv-1]} 产量（低温额外+2产）`;
+  if (m === 'sand') text = `清除异常状态时，增加 ${(data.values[lv-1]*100).toFixed(0)}% 产量`;
+  if (m === 'bag') text = `偷菜收益增加 ${(data.values[lv-1]*100).toFixed(0)}%`;
+  box.innerHTML = text;
+}
+function updatePetInfo() {
+  const p = document.getElementById('simPet').value;
+  const lv = parseInt(document.getElementById('simPetLv').value);
+  const box = document.getElementById('descPet');
+  if (p === 'none' || !farmData) { box.innerHTML = '未装备灵根'; return; }
+  const data = farmData.pets[p];
+  if (data) box.innerHTML = `被偷后恢复时间缩短 ${data.values[lv-1]} 分钟`;
+}
+
+function getCropResult(crop, weather, fairy, fairyLv, magic, magicLv) {
+  if (!farmData) return null;
+  let baseTime  = crop.time;
+  let baseYield = crop.yield;
+  let basePrice = crop.price;
+  
+  let formulas = { time: [], yield: [], price: [] };
+  formulas.yield.push(`基础产量: ${baseYield}`);
+  formulas.price.push(`基础单价: ${basePrice}`);
+
+  const weatherInfo = farmData.weathers[weather] || { light: 'strong', temperature: 'high', humidity: 'high' };
+
+  if (magic === 'brush' && farmData.magics.brush) {
+    const d = farmData.magics.brush.values[magicLv - 1];
+    let applied = false;
+    let yAdd = 0, pAdd = 0, tAdd = 0;
+    if (crop.name === '白菜') { yAdd += d.baicai.y; pAdd += d.baicai.p; }
+    if (crop.name === '萝卜') { tAdd += d.luobo.t; }
+    if (crop.name === '辣椒') { pAdd += d.lajiao.p; }
+    if (crop.name === '甘蔗') { tAdd += d.ganzhe.t; yAdd += d.ganzhe.y; }
+    if (crop.name === '蘑菇') { tAdd += d.mogu.t; }
+    if (crop.name === '蓝莓') { pAdd += d.lanmei.p; }
+    
+    if (yAdd || pAdd || tAdd) {
+      baseYield += yAdd; basePrice += pAdd; baseTime += tAdd;
+      formulas.yield.push(`如意笔: +${yAdd}`);
+      formulas.price.push(`如意笔: +${pAdd}`);
+      formulas.time.push(`如意笔: ${tAdd}h`);
+    }
+  }
+
+  const ruyiBoost = (magic === 'ruyi' && farmData.magics.ruyi) ? farmData.magics.ruyi.values[magicLv - 1] : 0;
+  const posMul = 1 + ruyiBoost;
+  const negMul = 1;
+  
+  let timeFactor = 1, yieldFactor = 1, priceFactor = 1;
+  let weatherLogs = { time: [], yield: [], price: [] };
+
+  if (weatherInfo.light === 'strong') {
+    if (crop.type.includes('喜光')) { timeFactor *= (1 - 0.1 * posMul); weatherLogs.time.push(`强光-喜光 ${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('喜阴')) { timeFactor *= (1 + 0.1 * negMul); weatherLogs.time.push(`强光-喜阴 +${(0.1*negMul*100).toFixed(0)}%`); }
+  } else if (weatherInfo.light === 'weak') {
+    if (crop.type.includes('喜阴')) { timeFactor *= (1 - 0.1 * posMul); weatherLogs.time.push(`弱光-喜阴 ${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('喜光')) { timeFactor *= (1 + 0.1 * negMul); weatherLogs.time.push(`弱光-喜光 +${(0.1*negMul*100).toFixed(0)}%`); }
+  }
+
+  if (weatherInfo.temperature === 'high') {
+    if (crop.type.includes('耐热')) { yieldFactor *= (1 + 0.1 * posMul); weatherLogs.yield.push(`高温-耐热 +${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('耐寒')) { yieldFactor *= (1 - 0.1 * negMul); weatherLogs.yield.push(`高温-耐寒 ${(0.1*negMul*100).toFixed(0)}%`); }
+  } else if (weatherInfo.temperature === 'low') {
+    if (crop.type.includes('耐寒')) { yieldFactor *= (1 + 0.1 * posMul); weatherLogs.yield.push(`低温-耐寒 +${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('耐热')) { yieldFactor *= (1 - 0.1 * negMul); weatherLogs.yield.push(`低温-耐热 ${(0.1*negMul*100).toFixed(0)}%`); }
+  }
+
+  if (weatherInfo.humidity === 'high') {
+    if (crop.type.includes('喜湿')) { priceFactor *= (1 + 0.1 * posMul); weatherLogs.price.push(`高湿-喜湿 +${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('耐旱')) { priceFactor *= (1 - 0.1 * negMul); weatherLogs.price.push(`高湿-耐旱 ${(0.1*negMul*100).toFixed(0)}%`); }
+  } else if (weatherInfo.humidity === 'low') {
+    if (crop.type.includes('耐旱')) { priceFactor *= (1 + 0.1 * posMul); weatherLogs.price.push(`低湿-耐旱 +${(0.1*posMul*100).toFixed(0)}%`); }
+    if (crop.type.includes('喜湿')) { priceFactor *= (1 - 0.1 * negMul); weatherLogs.price.push(`低湿-喜湿 ${(0.1*negMul*100).toFixed(0)}%`); }
+  }
+
+  if (weatherLogs.time.length) formulas.time.push(`天气(${weatherLogs.time.join(', ')})`);
+  if (weatherLogs.yield.length) formulas.yield.push(`天气(${weatherLogs.yield.join(', ')})`);
+  if (weatherLogs.price.length) formulas.price.push(`天气(${weatherLogs.price.join(', ')})`);
+
+  baseTime  *= timeFactor;
+  baseYield *= yieldFactor;
+  basePrice *= priceFactor;
+
+  if (magic === 'gourd' && farmData.magics.gourd) {
+    let gAdd = farmData.magics.gourd.values[magicLv - 1];
+    let bonus = (weatherInfo.temperature === 'low') ? 2 : 0;
+    baseTime  += 2;
+    baseYield += gAdd + bonus;
+    formulas.time.push(`醇化葫: +2h`);
+    formulas.yield.push(`醇化葫: +${gAdd}${bonus ? '+'+bonus+'(低温)' : ''}`);
+  } else if (magic === 'sand' && farmData.magics.sand) {
+    let sMul = farmData.magics.sand.values[magicLv - 1];
+    baseYield *= (1 + sMul);
+    formulas.yield.push(`沙漏: +${(sMul*100).toFixed(0)}%`);
+  }
+
+  if (fairy === 'clock' && farmData.fairies.clock) {
+    let cVal = farmData.fairies.clock.values[fairyLv - 1] / 60;
+    baseTime -= cVal;
+    formulas.time.push(`速生钟: -${cVal.toFixed(1)}h`);
+  } else if (fairy === 'dice' && farmData.fairies.dice) {
+    let p = farmData.fairies.dice.values[fairyLv - 1];
+    baseYield *= (1 + p * 0.5);
+    formulas.yield.push(`骰子: 期望+${(p*0.5*100).toFixed(1)}%(${(p*100).toFixed(0)}%概率×1.5)`);
+  } else if (fairy === 'miao' && crop.name === '甘蔗' && farmData.fairies.miao) {
+    let mVal = farmData.fairies.miao.values[fairyLv - 1];
+    baseYield += mVal;
+    formulas.yield.push(`共生苗: +${mVal}`);
+  }
+
+  const finalTime  = Math.max(0.5, baseTime);
+  const finalYield = Math.floor(baseYield);
+  const finalPrice = Math.floor(basePrice);
+
+  const baseProfit = finalYield * finalPrice - crop.cost;
+  
+  let baseCritRate = 0.05;
+  let thunderCritRate = 0;
+  if (fairy === 'thunder' && farmData.fairies.thunder) {
+    let negative = false;
+    if (weatherInfo.light === 'strong' && crop.type.includes('喜阴')) negative = true;
+    if (weatherInfo.light === 'weak' && crop.type.includes('喜光')) negative = true;
+    if (weatherInfo.temperature === 'high' && crop.type.includes('耐寒')) negative = true;
+    if (weatherInfo.temperature === 'low' && crop.type.includes('耐热')) negative = true;
+    if (weatherInfo.humidity === 'high' && crop.type.includes('耐旱')) negative = true;
+    if (weatherInfo.humidity === 'low' && crop.type.includes('喜湿')) negative = true;
+    if (negative) thunderCritRate = farmData.fairies.thunder.values[fairyLv - 1];
+  }
+
+  const finalCritRate = 1 - (1 - baseCritRate) * (1 - thunderCritRate);
+  const expectedYield = finalYield * (1 + finalCritRate);
+  const expectedProfit = Math.floor(expectedYield * finalPrice - crop.cost);
+
+  return { 
+    name: crop.name, 
+    time: finalTime, 
+    yield: finalYield, 
+    price: finalPrice, 
+    baseProfit: Math.floor(baseProfit),
+    expectedProfit: expectedProfit,
+    expectedProfitPerHour: expectedProfit / finalTime,
+    critRate: finalCritRate,
+    formulas: formulas
+  };
+}
+
+function calculateFarm() {
+  if (!farmData || !farmData.crops) return;
+  const weather  = document.getElementById('simWeather').value;
+  const fairy    = document.getElementById('simFairy').value;
+  const fairyLv  = parseInt(document.getElementById('simFairyLv').value);
+  const magic    = document.getElementById('simMagic').value;
+  const magicLv  = parseInt(document.getElementById('simMagicLv').value);
+
+  let results = farmData.crops.map(crop => getCropResult(crop, weather, fairy, fairyLv, magic, magicLv));
+
+  const compareDetails = document.getElementById('compareDetails');
+  const tbody = document.querySelector('#compareTable tbody');
+  const sortedForCompare = [...results].sort((a, b) => b.expectedProfitPerHour - a.expectedProfitPerHour);
+  tbody.innerHTML = '';
+  sortedForCompare.forEach((res, idx) => {
+    const isBest = idx === 0;
+    tbody.innerHTML += `<tr class="${isBest ? 'highlight' : ''}">
+      <td>${res.name} ${isBest ? '👑' : ''}</td>
+      <td>${res.yield} / ${res.price}</td>
+      <td>${res.baseProfit}</td>
+      <td>${res.expectedProfit}</td>
+      <td>${res.expectedProfitPerHour.toFixed(1)}</td>
+    </tr>`;
+  });
+  compareDetails.style.display = 'block';
+
+  const best1 = [...results].sort((a, b) => b.expectedProfit - a.expectedProfit)[0];
+  const best2 = [...results].sort((a, b) => b.expectedProfitPerHour - a.expectedProfitPerHour)[0];
+
+  const renderDetailHTML = (best) => `
+    <div class="sim-detail-row"><span>基础单次收益：</span><span style="color:var(--text);">${best.baseProfit}</span></div>
+    <div class="sim-detail-row"><span style="color:var(--accent2);">暴击期望收益 (触发率 ${(best.critRate*100).toFixed(1)}%)：</span><span style="color:var(--accent2);">${best.expectedProfit}</span></div>
+    <div class="sim-detail-row"><span>成熟时间：</span><span>${best.time.toFixed(1)} 小时</span></div>
+    <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--line);">
+      <div class="sim-detail-row"><span>最终产量：</span><span>${best.yield}</span></div>
+      <span class="math-formula">${best.formulas.yield.join(' → ')}</span>
+      
+      <div class="sim-detail-row" style="margin-top:8px;"><span>最终单价：</span><span>${best.price}</span></div>
+      <span class="math-formula">${best.formulas.price.join(' → ')}</span>
+    </div>
+  `;
+
+  document.getElementById('bestCrop1').textContent = best1.name;
+  document.getElementById('detail1').innerHTML = renderDetailHTML(best1);
+  document.getElementById('recommend1').innerHTML = `<strong>推荐搭配：</strong> 在此配置下，选择 <strong>${best1.name}</strong> 能在单次收获中获得最高利润，适合佛系玩家。`;
+
+  document.getElementById('bestCrop2').textContent = best2.name;
+  document.getElementById('detail2').innerHTML = renderDetailHTML(best2) + `
+    <div class="sim-detail-row" style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px;"><span style="color:var(--accent2);font-weight:600;">时均期望收益：</span><span style="color:var(--accent2);font-weight:600;">${best2.expectedProfitPerHour.toFixed(1)} / 小时</span></div>
+  `;
+  document.getElementById('recommend2').innerHTML = `<strong>推荐搭配：</strong> 如果追求一天多次周转，选择 <strong>${best2.name}</strong> 的时均收益最高，适合高活跃度玩家。`;
+
+  document.getElementById('simResultArea').style.display = 'grid';
+  calculateGlobalBest(weather);
+}
+
+function calculateGlobalBest(weather) {
+  if (!farmData) return;
+  let globalBest = { expectedProfitPerHour: -1 };
+  const fairies = ['none', ...Object.keys(farmData.fairies || {})];
+  const magics  = ['none', ...Object.keys(farmData.magics || {})];
+
+  fairies.forEach(f => {
+    for (let fl = 1; fl <= 10; fl++) {
+      magics.forEach(m => {
+        const maxMl = (m === 'brush') ? 2 : 10;
+        for (let ml = 1; ml <= maxMl; ml++) {
+          farmData.crops.forEach(crop => {
+            const res = getCropResult(crop, weather, f, fl, m, ml);
+            if (res.expectedProfitPerHour > globalBest.expectedProfitPerHour) {
+              globalBest = { ...res, fairy: f, fairyLv: fl, magic: m, magicLv: ml };
+            }
+          });
+        }
+      });
+    }
+  });
+
+  document.getElementById('g-best-crop').textContent  = globalBest.name;
+  document.getElementById('g-best-fairy').textContent = globalBest.fairy === 'none' ? '无' : (farmData.fairies[globalBest.fairy] ? farmData.fairies[globalBest.fairy].name : '') + ' ' + globalBest.fairyLv + '级';
+  document.getElementById('g-best-magic').textContent = globalBest.magic === 'none' ? '无' : (farmData.magics[globalBest.magic] ? farmData.magics[globalBest.magic].name : '') + ' ' + globalBest.magicLv + '级';
+  document.getElementById('g-best-profit').textContent = globalBest.expectedProfit;
+  document.getElementById('g-best-rate').textContent   = globalBest.expectedProfitPerHour.toFixed(1);
+  
+  document.getElementById('bestExplain').innerHTML = `这套搭配之所以最优，是因为 <b>${globalBest.name}</b> 的特性在当前天气（${farmData.weathers[weather].name}）下完美匹配。配合满级的【${farmData.fairies[globalBest.fairy] ? farmData.fairies[globalBest.fairy].name : '无'}】和【${farmData.magics[globalBest.magic] ? farmData.magics[globalBest.magic].name : '无'}】，将单次利润推向了极限。你可以尝试更换右侧的装备或等级，看看收益会如何变化。`;
+
+  document.getElementById('globalBestBox').style.display = 'block';
+}
+
+document.getElementById('refreshCharBtn').addEventListener('click', () => loadChars(true));
+document.getElementById('refreshTitleBtn').addEventListener('click', () => loadTitles(true));
+document.getElementById('refreshHoroscopeBtn').addEventListener('click', () => loadHoroscope(true));
+document.getElementById('titleSearch').addEventListener('input', renderTitles);
+document.getElementById('simWeather').addEventListener('change', updateWeatherInfo);
+document.getElementById('simFairy').addEventListener('change', updateFairyInfo);
+document.getElementById('simFairyLv').addEventListener('change', updateFairyInfo);
+document.getElementById('simMagic').addEventListener('change', updateMagicInfo);
+document.getElementById('simMagicLv').addEventListener('change', updateMagicInfo);
+document.getElementById('simPet').addEventListener('change', updatePetInfo);
+document.getElementById('simPetLv').addEventListener('change', updatePetInfo);
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-copy]');
+  if (!btn) return;
+  const text = btn.getAttribute('data-copy');
+  const isShareBtn = btn.classList.contains('share-icon-btn');
+  const done = () => {
+    const old = btn.innerHTML;
+    btn.innerHTML = '已复制';
+    btn.style.fontSize = isShareBtn ? '10px' : '';
+    btn.style.color = isShareBtn ? 'var(--accent)' : '';
+    setTimeout(() => { btn.innerHTML = old; btn.style.fontSize = isShareBtn ? '' : ''; btn.style.color = isShareBtn ? '' : ''; }, 1200);
+  };
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done).catch(() => { fallbackCopy(text); done(); });
+  else { fallbackCopy(text); done(); }
+});
+function fallbackCopy(text){
+  const ta = document.createElement('textarea'); ta.value = text;
+  document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+}
+
+loadChars(); loadTitles(); loadHoroscope(); loadFarm();
+</script>
+</body>
+</html>
